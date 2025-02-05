@@ -1,6 +1,6 @@
 FROM node:20-alpine
 LABEL project="learning"
-ARG USERNAME=am
+ARG USERNAME=chess
 RUN adduser -D -h /apps -s /bin/sh ${USERNAME}
 USER ${USERNAME}
 WORKDIR /apps
