@@ -1,9 +1,9 @@
 FROM node:20-alpine
 LABEL project = "learning"
 ARG USERNAME=am
+USER ${USERNAME}
 RUN adduser -D -h /apps -s /bin/sh ${USERNAME}
 WORKDIR /apps
-USER ${USERNAME}
 COPY --chown=${USERNAME}:${USERNAME} . /apps
 RUN npm install && npm run build
 EXPOSE 4173
