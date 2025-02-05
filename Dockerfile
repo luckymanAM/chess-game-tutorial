@@ -1,10 +1,10 @@
-FROM node:23-slim
-RUN npm install
+FROM node:20-alpine
+LABEL project = "learning"
 ARG USERNAME=am
 RUN adduser -D -h /apps -s /bin/sh ${USERNAME}
-COPY --chown=${USERNAME}:${USERNAME} . /apps
 WORKDIR /apps
-RUN npm run build
-EXPOSE 8000
-CMD ["npm", "run", "preview"]
+COPY --chown=${USERNAME}:${USERNAME} . /apps
+RUN npm install && npm run build
+EXPOSE 4173
+CMD ["npm", "run", "preview","--","--host","4173"]
  
